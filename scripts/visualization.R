@@ -79,7 +79,7 @@ interviews_plotting |>
        fill = "Village") +
   theme_classic()
 
-ggsave("fig/wall-type.png", height = 8, width = 5)
+ggsave("fig/wall-type.png", height = 10, width = 5)
 
 
 
