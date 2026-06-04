@@ -11,9 +11,15 @@ library(tidyverse)
 #ui
 ui <- fluidPage(
   titlePanel("Interactive Greeting Application"), 
-  textInput(inputId = "user_input", 
-            label = "Enter your greeting:", 
-            value = "Hello, World!"), 
+  radioButtons(
+    inputId = "user_input", 
+    label = "Choose your greeting:", 
+    choices = c("Hello!", "Howdy!", "What's up?"),
+    selected = "What's up?"
+  ),
+  
+  textInput(inputId = "name", 
+            label = "What is your name?"),
   
   textOutput((outputId = 'greeting'))
 )
@@ -21,8 +27,9 @@ ui <- fluidPage(
 #server
 server <- function(input, output) {
   output$greeting <- renderText({
-    paste0(input$user_input, " is the greeting you entered")
+    paste(input$user_input, input$name)
   })
+  
 }
 
 #launch app
